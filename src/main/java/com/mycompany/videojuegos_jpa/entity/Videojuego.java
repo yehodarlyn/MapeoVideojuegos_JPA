@@ -5,6 +5,7 @@
 package com.mycompany.videojuegos_jpa.entity;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,17 +20,19 @@ import java.util.Set;
  *
  * @author Laboratorios
  */
-public class Videojuego implements Serializable{
+@Entity
+public class Videojuego implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String nombre;
     private int puntaje;
     private String desarrolladora;
-    
+
     @OneToMany(mappedBy = "videojuego", cascade = CascadeType.ALL)
     private Set<Logro> logros;
 
@@ -39,8 +42,9 @@ public class Videojuego implements Serializable{
             joinColumns = @JoinColumn(name = "videojuego_id"),
             inverseJoinColumns = @JoinColumn(name = "jugador_id")
     )
-    
+
     private Set<Jugador> jugadores;
+
     public Videojuego() {
     }
 
@@ -52,13 +56,6 @@ public class Videojuego implements Serializable{
         this.logros = logros;
         this.jugadores = jugadores;
     }
-
-    
-    
-
-
-
-    
 
     public Long getId() {
         return id;
@@ -99,5 +96,5 @@ public class Videojuego implements Serializable{
     public void setLogros(Set logros) {
         this.logros = logros;
     }
-    
+
 }

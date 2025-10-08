@@ -5,6 +5,7 @@
 package com.mycompany.videojuegos_jpa.entity;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,28 +19,28 @@ import java.util.Set;
  *
  * @author Laboratorios
  */
+@Entity
 public class Jugador {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String pseudonimo;
     private String sexo;
     private LocalDate fechaNacimiento;
-    
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "direccion_id", referencedColumnName = "id")
     private Direccion direccion;
 
-            
     @ManyToMany(mappedBy = "jugadores")
     private Set<Videojuego> videojuegos;
+
     public Jugador() {
     }
-
-
 
     public Set getVideojuegos() {
         return videojuegos;
@@ -48,9 +49,6 @@ public class Jugador {
     public void setVideojuegos(Set videojuegos) {
         this.videojuegos = videojuegos;
     }
-
-      
-    
 
     public Long getId() {
         return id;
@@ -92,6 +90,4 @@ public class Jugador {
         this.direccion = direccion;
     }
 
-    
-    
 }

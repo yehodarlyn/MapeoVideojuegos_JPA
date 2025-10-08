@@ -2,6 +2,10 @@
 <persistence version="3.2" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd">
   <persistence-unit name="VideoJuegosPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>com.mycompany.videojuegos_jpa.entity.Direccion</class>
+    <class>com.mycompany.videojuegos_jpa.entity.Jugador</class>
+    <class>com.mycompany.videojuegos_jpa.entity.Logro</class>
+    <class>com.mycompany.videojuegos_jpa.entity.Videojuego</class>
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/VideoJuegos"/>
       <property name="jakarta.persistence.jdbc.user" value="root"/>
